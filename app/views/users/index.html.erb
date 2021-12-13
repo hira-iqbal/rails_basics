@@ -6,6 +6,7 @@
     <th>User Role</th>
   </thead>
   <tbody>
+    <% users = User.includes(:role) %>
     <% @users.each do |user|%>
       <tr>
         <td><%= user.name%></td>
