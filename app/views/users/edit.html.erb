@@ -1,3 +1,4 @@
+<h2>Select roles</h2>
 <%= form_with(model: @user) do |form|%>
 <%= form.collection_check_boxes :role_ids, Role.all, :id, :name %>
 <%= form.button :submit %>
