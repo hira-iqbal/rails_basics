@@ -1,3 +1,4 @@
+<h2 align="center">Existing users</h2>
 <table class="table table-bordered">
   <thead>
     <th>Name</th>
@@ -5,6 +6,7 @@
     <th>User Role</th>
   </thead>
   <tbody>
+    <% @users = User.includes(:roles) %>
     <% @users.each do |user|%>
       <tr>
         <td><%= user.name%></td>
