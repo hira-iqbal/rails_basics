@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   before_action :find_user,only: [:edit, :update]
+  after_action :verify_authorized, except: :index
 
   def index
-    @users = User.all
+    @users = User.includes(:roles)
   end
 
   def edit; end
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by(params[:id])
+    authorize @user
   end
 end
 
