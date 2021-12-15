@@ -4,13 +4,16 @@
     <th>Name</th>
     <th>Email</th>
     <th>User Role</th>
+    <th>Actions</th>
+    <th>Image</th>
   </thead>
   <tbody>
     <% @users.each do |user|%>
       <tr>
-        <td><%= user.name%></td>
-        <td><%= user.email%></td>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
         <td><%= user.roles.pluck(:name)%></td>
+        <td><%= image_tag(user.image.image.url, height: "50px", width: "50px") if user.image.present? %></td>
         <td><button class="btn btn-outline-warning"><%= link_to "Edit roles", edit_user_path(user) %></button></td>
       </tr>
     <% end %>

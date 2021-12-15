@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   after_action :verify_authorized, except: :index
 
   def index
-    @users = User.includes(:roles)
+    @users = User.includes(:roles, :image)
   end
 
   def edit; end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit({role_ids:[]})
+    params.require(:user).permit(role_ids: [])
   end
 
   def find_user
